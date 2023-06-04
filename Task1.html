@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Show Date and Time</title>
+    <style>
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      #one{
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <title>Task1</title>
+  <body>
+    <div id="one">
+      <button onclick="showDate()">Show Date</button>
+      <br />
+      <br />
+      <br />
+      <button onclick="showTime()">Show Time</button>
+
+      <div id="result"></div>
+    </div>
+    <script>
+      function showDate() {
+        var currentDate = new Date();
+        var date = currentDate.toLocaleDateString("en-US");
+
+        document.getElementById("result").innerHTML = "Current Date: " + date;
+      }
+
+      function showTime() {
+        var currentDate = new Date();
+        var time = currentDate.toLocaleTimeString("en-IN", {
+          timeZone: "Asia/Kolkata",
+        });
+
+        document.getElementById("result").innerHTML =
+          "Current Time (IST): " + time;
+      }
+    </script>
+  </body>
+</html>

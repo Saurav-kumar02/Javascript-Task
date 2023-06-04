@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #one {
+        margin-left: 450px;
+      }
+      .warning {
+        color: red;
+      }
+    </style>
+    <title>Task11</title>
+  </head>
+  <body style="background-color: pink;">
+    <div id="one">
+      <h2 style="color: blue">Registration Form</h2>
+      <form action="#" method="POST" onsubmit="return validateForm()">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" /><br />
+        <span id="first_name_warning" class="warning"></span><br />
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" /><br />
+        <span id="last_name_warning" class="warning"></span><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" /><br />
+        <span id="email_warning" class="warning"></span><br />
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" checked />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">Female</label><br />
+        <span id="gender_warning" class="warning"></span><br />
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" /><br />
+        <span id="age_warning" class="warning"></span><br />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" /><br />
+        <span id="phone_warning" class="warning"></span><br />
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea><br />
+        <span id="address_warning" class="warning"></span><br />
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" /><br />
+        <span id="state_warning" class="warning"></span><br />
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+          <option value="" disabled selected>Choose your country</option>
+          <option value="India">India</option>
+          <option value="Canada">Canada</option>
+          <option value="UK">UK</option></select
+        ><br />
+        <span id="country_warning" class="warning"></span><br />
+
+        <label for="languages">Languages known:</label>
+        <input
+          type="checkbox"
+          id="english"
+          name="languages[]"
+          value="English"
+        />
+        <label for="english">English</label>
+        <input
+          type="checkbox"
+          id="kannada"
+          name="languages[]"
+          value="Kannada"
+        />
+        <label for="kannada">Kannada</label>
+        <input type="checkbox" id="hindi" name="languages[]" value="Hindi" />
+        <label for="hindi">Hindi</label>
+        <input type="checkbox" id="telugu" name="languages[]" value="Telugu" />
+        <label for="telugu">Telugu</label><br />
+        <span id="languages_warning" class="warning"></span><br />
+
+        <input type="checkbox" id="declaration" checked name="declaration" />
+        <label for="declaration"
+          >Hereby I declare all the given details are true</label
+        ><br />
+        <span id="declaration_warning" class="warning"></span><br />
+        <div  style="margin-left: 20%;">
+          Log in to <a href="https://ethnus.com/">Etnus</a> website
+        </div>
+
+        <input type="submit" value="Register" style="margin-left: 12%; background-color: red;"/>
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        // Reset all warning messages
+        var warningSpans = document.getElementsByClassName("warning");
+        for (var i = 0; i < warningSpans.length; i++) {
+          warningSpans[i].innerHTML = "";
+        }
+
+        var isValid = true;
+
+        // Perform validation for each field
+        var firstName = document.getElementById("first_name").value;
+        if (!validateFirstName(firstName)) {
+          document.getElementById("first_name_warning").innerHTML = "POOR";
+          isValid = false;
+        }
+
+        var lastName = document.getElementById("last_name").value;
+        if (!validateLastName(lastName)) {
+          document.getElementById("last_name_warning").innerHTML = "POOR";
+          isValid = false;
+        }
+
+        var email = document.getElementById("email").value;
+        if (!validateEmail(email)) {
+          document.getElementById("email_warning").innerHTML =
+            "POOR OR MISMATCH";
+          isValid = false;
+        }
+
+        // var gender = document.querySelector('input[name="gender"]:checked');
+        // if (!gender) {
+        //   document.getElementById("gender_warning").innerHTML =
+        //     "POOR";
+        //   isValid = false;
+        // }
+
+        var age = document.getElementById("age").value;
+        if (!validateAge(age)) {
+          document.getElementById("age_warning").innerHTML = "POOR";
+          isValid = false;
+        }
+
+        var phone = document.getElementById("phone").value;
+        if (!validatePhone(phone)) {
+          document.getElementById("phone_warning").innerHTML = "POOR";
+          isValid = false;
+        }
+
+        var address = document.getElementById("address").value;
+        if (!validateAddress(address)) {
+          document.getElementById("address_warning").innerHTML = "POOR";
+          isValid = false;
+        }
+
+        var state = document.getElementById("state").value;
+        if (!validateState(state)) {
+          document.getElementById("state_warning").innerHTML = "POOR";
+          isValid = false;
+        }
+
+        // var country = document.getElementById("country").value;
+        // if (!validateCountry(country)) {
+        //   document.getElementById("country_warning").innerHTML = "POOR";
+        //   isValid = false;
+        // }
+
+        // var languages = document.querySelectorAll(
+        //   'input[name="languages[]"]:checked'
+        // );
+        // if (languages.length === 0) {
+        //   document.getElementById("languages_warning").innerHTML = "POOR";
+        //   isValid = false;
+        // }
+
+        // var declaration = document.getElementById("declaration").checked;
+        // if (!declaration) {
+        //   document.getElementById("declaration_warning").innerHTML =
+        //     "Please accept the declaration";
+        //   isValid = false;
+        // }
+
+        return isValid;
+      }
+
+      function validateFirstName(firstName) {
+        // Add your validation logic for the first name field
+        // Return true if the input is valid, false otherwise
+        return firstName.length > 0;
+      }
+
+      function validateLastName(lastName) {
+        // Add your validation logic for the last name field
+        // Return true if the input is valid, false otherwise
+        return lastName.length > 0;
+      }
+
+      function validateEmail(email) {
+        // Add your validation logic for the email field
+        // Return true if the input is valid, false otherwise
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function validateAge(age) {
+        // Add your validation logic for the age field
+        // Return true if the input is valid, false otherwise
+        return age > 0 && age < 150;
+      }
+
+      function validatePhone(phone) {
+        // Add your validation logic for the phone number field
+        // Return true if the input is valid, false otherwise
+        var phoneRegex = /^\d{10}$/;
+        return phoneRegex.test(phone);
+      }
+
+      function validateAddress(address) {
+        // Add your validation logic for the address field
+        // Return true if the input is valid, false otherwise
+        return address.length > 0;
+      }
+
+      function validateState(state) {
+        // Add your validation logic for the state field
+        // Return true if the input is valid, false otherwise
+        return state.length > 0;
+      }
+
+      function validateCountry(country) {
+        // Add your validation logic for the country field
+        // Return true if the input is valid, false otherwise
+        return country !== "";
+      }
+    </script>
+  </body>
+</html>

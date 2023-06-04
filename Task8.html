@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task8</title>
+    <style>
+      #movingDiv {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        transition: left 0.5s ease-in-out;
+      }
+    </style>
+    <script>
+      var animationInterval;
+      var moveStep = 10; // Pixels to move per interval
+      var currentPosition = 0;
+      var isMoving = false;
+
+      function startAnimation() {
+        if (isMoving) return; // Don't start if already moving
+        isMoving = true;
+
+        var movingDiv = document.getElementById("movingDiv");
+        var containerWidth = document.getElementById("container").offsetWidth;
+        var divWidth = movingDiv.offsetWidth;
+
+        animationInterval = setInterval(function () {
+          currentPosition += moveStep;
+
+          if (currentPosition > containerWidth - divWidth) {
+            currentPosition = 0;
+          }
+
+          movingDiv.style.left = currentPosition + "px";
+        }, 50);
+      }
+
+      function stopAnimation() {
+        if (!isMoving) return; // Don't stop if not moving
+        isMoving = false;
+
+        clearInterval(animationInterval);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Moving Div</h1>
+    <div id="container">
+      <div id="movingDiv">
+        <img src="train.jpg" />
+      </div>
+    </div>
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+  </body>
+</html>

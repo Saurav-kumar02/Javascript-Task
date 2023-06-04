@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task3</title>
+    <style>
+      .error {
+        color: red;
+      }
+      .one {
+        margin-left: 20px;
+      }
+      #one_ {
+        margin-top: 90px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one_">
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input class="one" type="text" id="name" name="name" required />
+        <span id="nameError" class="error"></span>
+        <br />
+        <br />
+        <label for="email">Email:</label>
+        <input class="one" type="email" id="email" name="email" required />
+        <span id="emailError" class="error"></span>
+        <br />
+        <br />
+
+        <label for="website">Website:</label>
+        <input class="one" type="text" id="website" name="website" required />
+        <span id="websiteError" class="error"></span>
+        <br />
+        <br />
+
+        <label for="message">Message:</label>
+        <textarea
+          class="one"
+          id="message"
+          name="message"
+          required
+          cols="19"
+          rows="6"
+        ></textarea>
+        <span id="messageError" class="error"></span>
+        <br />
+        <br />
+
+        <input type="submit" value="Submit" onclick="validateForm(event)" />
+      </form>
+    </div>
+
+    <script>
+      function validateForm(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Clear previous error messages
+        clearError("nameError");
+        clearError("emailError");
+        clearError("websiteError");
+        clearError("messageError");
+
+        // Get form values
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const websiteInput = document.getElementById("website");
+        const messageInput = document.getElementById("message");
+
+        // Validate Name
+        if (nameInput.value.trim() === "") {
+          showError("nameError", "Please enter your name.");
+        }
+
+        // Validate Email
+        if (emailInput.value.trim() === "") {
+          showError("emailError", "Please enter your email.");
+        } else if (!isValidEmail(emailInput.value)) {
+          showError("emailError", "Please enter a valid email address.");
+        }
+
+        // Validate Website
+        if (websiteInput.value.trim() === "") {
+          showError("websiteError", "Please enter your website name.");
+        } else if (!isValidWebsite(websiteInput.value)) {
+          showError("websiteError", "Please enter a valid website name.");
+        }
+
+        // Validate Message
+        if (messageInput.value.trim() === "") {
+          showError("messageError", "Please enter a message.");
+        }
+      }
+
+      function showError(errorId, errorMessage) {
+        const errorSpan = document.getElementById(errorId);
+        errorSpan.textContent = errorMessage;
+        errorSpan.style.display = "inline-block";
+      }
+
+      function clearError(errorId) {
+        const errorSpan = document.getElementById(errorId);
+        errorSpan.textContent = "";
+        errorSpan.style.display = "none";
+      }
+
+      function isValidEmail(email) {
+        // Use a simple email validation regular expression
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function isValidWebsite(website) {
+        // Use a simple website validation regular expression
+        const websiteRegex =
+          /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+        return websiteRegex.test(website);
+      }
+    </script>
+  </body>
+</html>

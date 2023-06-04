@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      // concat method
+      console.log("concat method");
+      const array1 = [10, 20, 30];
+      const array2 = [40, 50, 60];
+      const concatenatedArray = array1.concat(array2);
+      console.log(concatenatedArray);
+
+      // findIndex method
+      console.log("findIndex method");
+      const array3 = [10, 20, 30, 40, 50, 60];
+      const index = array3.findIndex((element) => element === 30);
+      console.log(index);
+
+      // copyWithin method
+      console.log("copyWithin method");
+      const array4 = [10, 20, 30, 40, 50, 60];
+      array4.copyWithin(3, 0, 3);
+      console.log(array4);
+
+      // map method
+      console.log("map method");
+      const array5 = [10, 20, 30, 40, 50, 60];
+      const mappedArray = array5.map((element) => element * 2);
+      console.log(mappedArray);
+
+      // every method
+      console.log("every method");
+      const array6 = [10, 20, 30, 40, 50, 60];
+      const everyResult = array6.every((element) => element > 5);
+      console.log(everyResult);
+
+      // some method
+      console.log("some method");
+      const array7 = [10, 20, 30, 40, 50, 60];
+      const someResult = array7.some((element) => element > 50);
+      console.log(someResult);
+
+      // filter method
+      console.log("filter method");
+      const array8 = [10, 20, 30, 40, 50, 60];
+      const filteredArray = array8.filter(
+        (element) => element > 10 && element < 40
+      );
+      console.log(filteredArray);
+
+      // find method
+      console.log("find method");
+      const array9 = [10, 20, 30, 40, 50, 60];
+      const foundElement = array9.find((element) => element === 20);
+      console.log(foundElement);
+
+      // indexOf method
+      console.log("indexOf method");
+      const array10 = [10, 20, 30, 40, 50, 60];
+      const index1 = array10.indexOf(20);
+      console.log(index1);
+
+      // lastIndexOf method
+      console.log("lastIndexOf method");
+      const array11 = [10, 20, 30, 40, 50, 20, 30];
+      const lastIndex = array11.lastIndexOf(20);
+      console.log(lastIndex);
+
+      // push method
+      console.log("push method");
+      const array12 = [10, 20, 30, 40, 50, 60];
+      array12.push(100);
+      console.log(array12);
+
+      // pop method
+      console.log("pop method");
+      const array13 = [10, 20, 30, 40, 50, 60];
+      array13.pop();
+      console.log(array13);
+
+      // shift method
+      console.log("shift method");
+      const array14 = [10, 20, 30, 40, 50, 60];
+      array14.shift();
+      console.log(array14);
+    </script>
+    <title>TAsk10</title>
+  </head>
+  <body>
+    <h1>Output in console</h1>
+  </body>
+</html>
